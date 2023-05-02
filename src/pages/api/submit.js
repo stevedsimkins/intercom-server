@@ -6,13 +6,10 @@ export default async function handler(req, res) {
   const convoId = JSON.stringify(req.body.conversation.id)
   const formData = new FormData()
 
-  const convoData = JSON.stringify({
-    type: "admin",
-    message_type: "comment",
-    body: "Hey there!",
-    admin_id: req.body.admin.id
-  })
-  formData.append(convoData)
+  formData.append('type', 'admin')
+  formData.append('message_type', 'comment')
+  formData.append('body', 'Hey there!')
+  formData.append('admin_id', `${req.body.admin.id}`)
 
   const conversationRes = await fetch(`https://api.intercom.io/conversations/${convoId}/reply`, formData, {
     headers: {

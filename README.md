@@ -2,7 +2,17 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First, run the development server:
+First, clone this repo and install dependencies
+```bash
+git clone https://github.com/stevedsimkins/intercom-server && cd intercom-server && npm install
+```
+
+Second, add your Intercom Workspace ID like so in a ```.env.local``` file
+```
+NEXT_PUBLIC_WORKSPACE_ID
+```
+
+Then, run the development server:
 
 ```bash
 npm run dev

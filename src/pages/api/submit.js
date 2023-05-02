@@ -27,7 +27,7 @@ export default async function handler(req, res) {
     canvas: {
       content: {
         components: [
-          { type: "text", text: `${conversationRes.data}`,
+          { type: "text", text: `${JSON.stringify(conversationRes.data)}`,
            style: "header", align: "center" },
         ],
       },

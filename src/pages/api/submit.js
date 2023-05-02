@@ -1,7 +1,6 @@
 import FormData from "form-data"
 
 export default async function handler(req, res) {
-  console.log(req.body)
   const reqBody = JSON.stringify(req.body.conversation.source.body)
   const convoId = JSON.stringify(req.body.conversation.id)
   const formData = new FormData()

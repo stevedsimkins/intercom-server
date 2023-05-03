@@ -7,9 +7,10 @@ First, clone this repo and install dependencies
 git clone https://github.com/stevedsimkins/intercom-server && cd intercom-server && npm install
 ```
 
-Second, add your Intercom Workspace ID like so in a ```.env.local``` file
+Second, add your Intercom Workspace ID and Intercom API token like so in a ```.env.local``` file
 ```
-NEXT_PUBLIC_WORKSPACE_ID
+NEXT_PUBLIC_WORKSPACE_ID=WORKSPACEID
+INTERCOM_KEY=INTERCOM-BEARER-TOKEN
 ```
 
 Then, run the development server:

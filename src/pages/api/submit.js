@@ -4,9 +4,11 @@ export default async function handler(req, res) {
   const reqBody = JSON.stringify(req.body.conversation.source.body)
   const convoId = JSON.stringify(req.body.conversation.id)
   const adminId = JSON.stringify(req.body.admin.id)
+  const url = `https://api.intercom.io/conversations/${convoId}/reply`
   const formData = new FormData()
   console.log(convoId)
   console.log(adminId)
+  console.log(url)
 
   formData.append('type', 'admin')
   formData.append('message_type', 'comment')
@@ -15,21 +17,23 @@ export default async function handler(req, res) {
 
 
   try {
-    const conversationRes = await fetch(`https://api.intercom.io/conversations/${convoId}/reply`, {
+    const conversationRes = await fetch(url, {
       method: 'POST',
       body: formData,
       headers: {
         "Authorization": `Bearer ${process.env.INTERCOM_KEY}`
       }
     })
+
     console.log(conversationRes.status)
-    console.log(conversationRes.json())
+    const data = conversationRes.json()
+    console.log(data)
 
     res.send({
       canvas: {
         content: {
           components: [
-            { type: "text", text: `${JSON.stringify(conversationRes.data)}`,
+            { type: "text", text: `${JSON.stringify(data)}`,
               style: "header", align: "center" },
           ],
         },

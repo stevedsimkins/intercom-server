@@ -4,6 +4,7 @@ sdk.server('https://api.intercom.io');
 
 
 export default async function handler(req, res) {
+  // reqBody gets contents of convo
   const reqBody = JSON.stringify(req.body.conversation.source.body)
   const convoId = req.body.conversation.id
   const adminId = req.body.admin.id
@@ -12,7 +13,7 @@ export default async function handler(req, res) {
     const conversationRes = await sdk.replyConversation({
       message_type: 'comment',
       type: 'admin',
-      body: 'Hey there!',
+      body: 'Hey there! Thank you for contacting us, we will reply later!',
       admin_id: `${adminId}` }, {id: `${convoId}`, 'intercom-version': '2.8'})
 
     const data = await conversationRes

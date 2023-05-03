@@ -22,13 +22,13 @@ export default async function handler(req, res) {
   })
 
   conversationRes.json().then(data => {
-    console.log(conversationRes.data)
+    console.log(conversationRes)
 
     res.send({
       canvas: {
         content: {
           components: [
-            { type: "text", text: `${JSON.stringify(conversationRes.data)}`,
+            { type: "text", text: `${JSON.stringify(conversationRes)}`,
               style: "header", align: "center" },
           ],
         },

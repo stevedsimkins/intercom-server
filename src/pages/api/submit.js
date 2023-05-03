@@ -2,8 +2,8 @@ import FormData from "form-data"
 
 export default async function handler(req, res) {
   const reqBody = JSON.stringify(req.body.conversation.source.body)
-  const convoId = JSON.stringify(req.body.conversation.id)
-  const adminId = JSON.stringify(req.body.admin.id)
+  const convoId = req.body.conversation.id
+  const adminId = req.body.admin.id
   const url = `https://api.intercom.io/conversations/${convoId}/reply`
   const formData = new FormData()
   console.log(convoId)

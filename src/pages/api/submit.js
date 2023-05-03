@@ -4,9 +4,7 @@ export default async function handler(req, res) {
   const reqBody = JSON.stringify(req.body.conversation.source.body)
   const convoId = req.body.conversation.id
   const adminId = req.body.admin.id
-  const url = `https://api.intercom.io/conversations/${convoId}/reply`
   const formData = new FormData()
-  console.log(convoId)
   console.log(adminId)
   console.log(url)
 
@@ -17,11 +15,14 @@ export default async function handler(req, res) {
 
 
   try {
+    const url = `https://api.intercom.io/conversations/${convoId}/reply`
     const conversationRes = await fetch(url, {
       method: 'POST',
       body: formData,
       headers: {
-        "Authorization": `Bearer ${process.env.INTERCOM_KEY}`
+        "authorization": `Bearer ${process.env.INTERCOM_KEY}`,
+        'content-type': 'application/json'
+        
       }
     })
 

@@ -21,20 +21,18 @@ export default async function handler(req, res) {
     }
   })
 
-  conversationRes.json().then(data => {
-    console.log(conversationRes)
+  const data = await conversationRes.json()
 
-    res.send({
-      canvas: {
-        content: {
-          components: [
-            { type: "text", text: `${JSON.stringify(conversationRes)}`,
-              style: "header", align: "center" },
-          ],
-        },
+  console.log(data)
+
+  res.send({
+    canvas: {
+      content: {
+        components: [
+          { type: "text", text: `${JSON.stringify(data)}`,
+            style: "header", align: "center" },
+        ],
       },
-    });
-
-  })
-
+    },
+  });
 }

@@ -9,7 +9,6 @@ export default async function handler(req, res) {
   console.log(convoId)
   console.log(adminId)
   console.log(url)
-  console.log(process.env.INTERCOM_KEY)
 
   formData.append('type', 'admin')
   formData.append('message_type', 'comment')
@@ -27,7 +26,7 @@ export default async function handler(req, res) {
     })
 
     console.log(conversationRes.status)
-    const data = conversationRes.json()
+    const data = await conversationRes.json()
     console.log(data)
 
     res.send({

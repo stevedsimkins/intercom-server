@@ -1,29 +1,20 @@
-import FormData from "form-data"
+const sdk = require('api')('@intercom-api-reference/v2.8#3c6mn4t106lesrrug9');
+sdk.auth(`${process.env.INTERCOM_KEY}`);
+sdk.server('https://api.intercom.io');
+
 
 export default async function handler(req, res) {
   const reqBody = JSON.stringify(req.body.conversation.source.body)
-  const convoId = req.body.conversation.id
-  const adminId = req.body.admin.id
-  const formData = new FormData()
-  console.log(adminId)
-
-  formData.append('type', 'admin')
-  formData.append('message_type', 'comment')
-  formData.append('body', 'Hey there!')
-  formData.append('admin_id', `${adminId}`)
-
+  const convoId = JSON.stringify(req.body.conversation.id)
+  const adminId = JSON.stringify(req.body.admin.id)
 
   try {
-    const url = `https://api.intercom.io/conversations/${convoId}/reply`
-    const conversationRes = await fetch(url, {
-      method: 'POST',
-      body: formData,
-      headers: {
-        "authorization": `Bearer ${process.env.INTERCOM_KEY}`,
-        'content-type': 'application/json'
-        
-      }
-    })
+    const conversationRes = await sdk.replyConversation({
+      message_type: 'comment',
+      type: 'admin',
+      body: 'Hey there!',
+      admin_id: adminId
+    }, {id: convoId, 'intercom-version': '2.8'})
 
     console.log(conversationRes.status)
     const data = await conversationRes.json()

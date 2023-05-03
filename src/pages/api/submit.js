@@ -13,26 +13,31 @@ export default async function handler(req, res) {
   formData.append('body', 'Hey there!')
   formData.append('admin_id', `${adminId}`)
 
-  const conversationRes = await fetch(`https://api.intercom.io/conversations/${convoId}/reply`, {
-    method: 'POST',
-    body: formData,
-    headers: {
-      "Authorization": `Bearer ${process.env.INTERCOM_KEY}`
-    }
-  })
 
-  const data = await conversationRes.json()
+  try {
+    const conversationRes = await fetch(`https://api.intercom.io/conversations/${convoId}/reply`, {
+      method: 'POST',
+      body: formData,
+      headers: {
+        "Authorization": `Bearer ${process.env.INTERCOM_KEY}`
+      }
+    })
+    console.log(conversationRes.status)
+    console.log(conversationRes.data)
 
-  console.log(data)
-
-  res.send({
-    canvas: {
-      content: {
-        components: [
-          { type: "text", text: `${JSON.stringify(data)}`,
-            style: "header", align: "center" },
-        ],
+    res.send({
+      canvas: {
+        content: {
+          components: [
+            { type: "text", text: `${JSON.stringify(data)}`,
+              style: "header", align: "center" },
+          ],
+        },
       },
-    },
-  });
+    });
+  } catch (error){
+    console.log(error)
+    res.sendStatus(500)
+  }
+
 }

@@ -7,7 +7,7 @@ First, clone this repo and install dependencies
 git clone https://github.com/stevedsimkins/intercom-server && cd intercom-server && npm install
 ```
 
-Second, add your Intercom Workspace ID and Intercom API token like so in a ```.env.local``` file
+Second, add your [Intercom Workspace ID](https://www.intercom.com/help/en/articles/3539-where-can-i-find-my-workspace-id-app-id) and [Intercom API Key](https://developers.intercom.com/building-apps/docs/authentication) like so in a ```.env.local``` file
 ```
 NEXT_PUBLIC_WORKSPACE_ID=WORKSPACEID
 INTERCOM_KEY=INTERCOM-BEARER-TOKEN
@@ -25,13 +25,9 @@ pnpm dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/initialize](http://localhost:3000/api/initialize). This endpoint can be edited in `pages/api/initialize.js`. 
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Most Intercom Canvas apps use an initialize endpoint and a submit endpoint. These two functions are setup in the ```api``` directory where you can edit them accordingly. You can see how this is done through this guide [here](https://developers.intercom.com/building-apps/docs/build-an-app-for-your-inbox). By default this app will have a button that can return an automated message using the Intercom API, and you will be able to see all the information you will have access to in the ```req``` body. 
 
 ## Learn More
 

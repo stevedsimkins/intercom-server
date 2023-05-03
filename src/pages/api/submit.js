@@ -6,7 +6,6 @@ export default async function handler(req, res) {
   const adminId = req.body.admin.id
   const formData = new FormData()
   console.log(adminId)
-  console.log(url)
 
   formData.append('type', 'admin')
   formData.append('message_type', 'comment')

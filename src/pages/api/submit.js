@@ -9,6 +9,7 @@ export default async function handler(req, res) {
   console.log(convoId)
   console.log(adminId)
   console.log(url)
+  console.log(process.env.INTERCOM_KEY)
 
   formData.append('type', 'admin')
   formData.append('message_type', 'comment')

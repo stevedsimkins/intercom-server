@@ -13,11 +13,9 @@ export default async function handler(req, res) {
       message_type: 'comment',
       type: 'admin',
       body: 'Hey there!',
-      admin_id: `${adminId}`
-    }, {id: `${convoId}`, 'intercom-version': '2.8'})
+      admin_id: `${adminId}` }, {id: `${convoId}`, 'intercom-version': '2.8'})
 
-    console.log(conversationRes.status)
-    const data = await conversationRes.json()
+    const data = await conversationRes
     console.log(data)
 
     res.send({

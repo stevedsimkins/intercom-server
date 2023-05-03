@@ -24,7 +24,7 @@ export default async function handler(req, res) {
       canvas: {
         content: {
           components: [
-            { type: "text", text: `${JSON.stringify(data)}`,
+            { type: "text", text: 'Success!',
               style: "header", align: "center" },
           ],
         },

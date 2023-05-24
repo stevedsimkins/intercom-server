@@ -4,7 +4,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 First, clone this repo and install dependencies
 ```bash
-git clone https://github.com/stevedsimkins/intercom-server && cd intercom-server && npm install
+git clone https://github.com/stevedylandev/intercom-server && cd intercom-server && npm install
 ```
 
 Second, add your [Intercom Workspace ID](https://www.intercom.com/help/en/articles/3539-where-can-i-find-my-workspace-id-app-id) and [Intercom API Key](https://developers.intercom.com/building-apps/docs/authentication) like so in a ```.env.local``` file
